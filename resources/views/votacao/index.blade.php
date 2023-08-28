@@ -17,6 +17,7 @@
             <th scope="col">Título</th>
             <th scope="col">Descrição</th>
             <th scope="col">ID da Categoria</th>
+            <th scope="col">Pública</th>
             <th width="160">Ações</th>
         </tr>
         </thead>
@@ -29,12 +30,20 @@
                 <td>{{ $votacao->descricao }}</td>
                 <td>{{ $votacao->categoria_id }}</td>
                 <td>
+                @if($votacao->publica == 0)
+                    Não
+                @else
+                    Sim
+                
+                @endif    
+            </td>
+                <td>
                     <a href="{{ route('votacao.edit', [$votacao->id]) }}"><button class="btn btn-secondary btn-sm">Editar</button></a>
                     <a href="{{ route('votacao.delete', [$votacao->id]) }}"><button class="btn btn-danger btn-sm">Excluir</button></a>
                 </td>
             </tr>
             @endforeach
-        </tbody>
+        </tbody>    
     </table>
 </div>
 

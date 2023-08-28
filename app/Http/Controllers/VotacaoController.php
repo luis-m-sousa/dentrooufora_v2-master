@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Votacao;
 use Carbon\Carbon;
+use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +28,6 @@ class VotacaoController extends Controller
         ]);
 
         $obj = new Votacao();
-
 
         $hash = substr(Hash::make(uniqid()), 0, 8);
         $obj->codigo = $hash;
@@ -61,5 +61,16 @@ class VotacaoController extends Controller
         $votacao->save();
 
        return redirect()->route('votacao.index');
+    }
+
+    public function ativaVotacao(Request $request, $codigo){
+        $votacao = Votacao::where('codigo', $codigo)->firstOrFail();
+
+        if($votacao->publica == 1){
+        return view('votacao.show', compact('votacao'));   
+        }
+        else{
+            abort(404);
+            }
     }
 }

@@ -42,6 +42,9 @@ Route::get('/votacao/edit/{id}',               [VotacaoController::class, 'edit'
 Route::post('/votacao/update/{id}',            [VotacaoController::class, 'update'])->name('votacao.update')->middleware('auth');
 Route::get('/votacao/delete/{id}',             [VotacaoController::class, 'delete'])->name('votacao.delete')->middleware('auth');
 
+Route::get('/votacao/{codigo}',                [VotacaoController::class, 'ativaVotacao'])->name('votacao.ativa');
+
+
 
 
 
