@@ -171,7 +171,7 @@ html, body {
                             <input class="form-control" type="text" name="categoria_id" value="{{ old('categoria_id') }}"  placeholder="ID da categoria" required>
                          </div>
                          <div class="col-md-12 pb-3">
-                            <input class="form-control" type="text" name="foto_capa" value="{{ old('foto_capa') }}"  placeholder="Foto de Capa">
+                            <input class="form-control" type="file" name="foto_capa" value="{{ old('foto_capa') }}"  placeholder="Foto de Capa">
                          </div>
                         <div class="form-button mt-3">
                             <input type="submit" value="Registrar" id="submit" class="btn btn-primary">

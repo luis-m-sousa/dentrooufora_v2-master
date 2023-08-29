@@ -16,6 +16,7 @@
                         <button class="btn btn-primary"><a href="/candidato" style="text-decoration: none; color: white">Candidatos</a></button>
                         <button class="btn btn-success"><a href="/categoria" style="text-decoration: none; color: white">Categorias</a></button>
                         <button class="btn btn-danger"><a href="/votacao" style="text-decoration: none; color: white">Votações</a></button>
+                        <button class="btn btn-secondary"><a href="/candidatovotacao" style="text-decoration: none; color: white">Candidatos em Votações</a></button>
                 </div>
             </div>
         </div>

@@ -159,14 +159,18 @@ html, body {
                 <div class="form-items">
                     <h3>Registro de candidato</h3>
                     <p>Preencha os campos abaixo.</p>
-                    <form class="requires-validation" method="POST">
+                    <form class="requires-validation" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12 pb-3">
                            <input class="form-control" type="text" name="nome" value="{{ old('nome') }}"  placeholder="Nome do candidato" required>
                         </div>
 
                         <div class="col-md-12">
-                            <input class="form-control" type="text" name="foto" value="{{ old('foto') }}"  placeholder="URL da foto" required>
+                            <div class="form-row">
+                            <div class="custom-file">
+                            <input class="form-control" type="file" name="foto" required>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="form-button mt-3">

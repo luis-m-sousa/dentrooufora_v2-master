@@ -5,7 +5,7 @@
 <div class="container px-4">
     <div class="mb-3">
         <a href="{{ route('candidatovotacao.create') }}">
-            <button class="btn btn-sm btn-success">Cadastrar Candidato em Votações</button>
+            <button class="btn btn-sm btn-success">Cadastrar Candidato em Votação</button>
         </a>
     </div>
 <div class="table-responsive">

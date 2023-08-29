@@ -159,7 +159,7 @@ html, body {
                 <div class="form-items">
                     <h3>Atualização de candidato de id {{$candidato->id}}</h3>
                     <p>Preencha os campos abaixo.</p>
-                    <form class="requires-validation" action="{{ route('candidato.update', [$candidato->id]) }}" method="POST">
+                    <form class="requires-validation" action="{{ route('candidato.update', [$candidato->id]) }}" method="POST" enctype="multipart/form-data">
                         
                         @csrf
                         <div class="col-md-12 pb-3">
@@ -167,7 +167,8 @@ html, body {
                         </div>
 
                         <div class="col-md-12">
-                            <input class="form-control" type="text" name="foto" value="{{$candidato->foto}}"  placeholder="URL da foto" required>
+                            <img src="/img/candidatos/{{$candidato->foto}}" alt="" style="width: 350px;" class="clickable-image">
+                            <input class="form-control" type="file" name="foto" placeholder="URL da foto" required>
                         </div>
 
                         <div class="form-button mt-3">

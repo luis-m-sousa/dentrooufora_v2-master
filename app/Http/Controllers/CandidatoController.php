@@ -14,15 +14,19 @@ class CandidatoController extends Controller
     {
         return view('candidato.create');
     }
-    public function store(Request $request){
-        $validated = $request->validate([
-            'nome' => 'required|max:100',
-            'foto' => '',
-        ]);
+    public function store(Request $request) {
 
-        $obj = new Candidato();
-        $obj->nome = $request->nome;
-        $obj->foto = $request->foto;
+        $obj            = new Candidato();
+        $obj->nome  = $request->nome ;
+
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $requestImage = $request->foto;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/candidatos'), $imageName); 
+            $obj->foto = $imageName;
+        }
+        
         $obj->save();
 
         return redirect()->route('candidato.index');
@@ -31,15 +35,25 @@ class CandidatoController extends Controller
     {
         $candidato = Candidato::findOrFail($id);
         return view('candidato.edit', ['candidato' => $candidato]);
-    }
-    public function update(Request $request, $id){
-        $candidato = Candidato::findOrFail($id);
+    }  
+    public function update(Request $request, $id) {
 
-        $candidato->nome = $request->nome;
-        $candidato->foto = $request->foto;
-        $candidato->save();
+        $validated = $request->validate([
+            'nome' =>'required|max:80'
+        ]);
+        $obj            = Candidato::findOrFail($id);
+        $obj->nome      = $request->nome;
 
-       return redirect()->route('candidato.index');
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $requestImage = $request->foto;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/candidatos'), $imageName); 
+            $obj->foto = $imageName;
+        }
+        $obj->save();
+
+        return redirect()->route('candidato.index');
     }
     public function delete(Request $request, $id){
         $obj = Candidato::findOrFail($id);

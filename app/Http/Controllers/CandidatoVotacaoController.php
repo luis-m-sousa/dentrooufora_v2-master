@@ -27,36 +27,5 @@ class CandidatoVotacaoController extends Controller
 
         return redirect()->route('candidatovotacao.index');
     }
-    public function edit(Request $request, $candidato_id, $votacao_id) {
-        $candidatovotacao = CandidatoVotacao::find(compact('candidato_id', 'votacao_id'));
-        
-        $candidato = Candidato::all();
-        $votacao = Votacao::all();
-        
-        return view('candidatovotacao.edit', [
-            'candidatovotacao' => $candidatovotacao,
-            'candidato' => $candidato,
-            'votacao' => $votacao
-        ]);
-    }
-    
-    public function update(Request $request, $candidato_id, $votacao_id) {
-        $candidatovotacao = CandidatoVotacao::where([
-            'candidato_id' => $candidato_id,
-            'votacao_id' => $votacao_id
-        ])->firstOrFail();
-        $candidatovotacao->candidato_id = $request->candidato_id;
-        $candidatovotacao->votacao_id = $request->votacao_id;
-    
-    }
-    
-    public function delete(Request $request, $candidato_id, $votacao_id) {
-        $candidatovotacao = CandidatoVotacao::find(compact('candidato_id', 'votacao_id'));
-    
-        $candidatovotacao->delete();
-    
-        return redirect()->route('candidatovotacao.index');
-    }
-    
     
 }

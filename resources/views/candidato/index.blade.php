@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $candidato->id }}</td>
                 <td>{{ $candidato->nome }}</td>
-                <td><img src="{{ $candidato->foto }}" alt="{{ $candidato->foto }}" style="width: 100px"></td>
+                <td><img src="/img/candidatos/{{$candidato->foto}}" alt="foto do candidato {{$candidato->nome}}" style="width: 100px"></td>
                 <td>
                     <a href="{{ route('candidato.edit', [$candidato->id]) }}"><button class="btn btn-secondary btn-sm">Editar</button></a>
                     <a href="{{ route('candidato.delete', [$candidato->id]) }}"><button class="btn btn-danger btn-sm">Excluir</button></a>

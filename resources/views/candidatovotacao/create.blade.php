@@ -157,7 +157,7 @@ html, body {
         <div class="form-holder">
             <div class="form-content">
                 <div class="form-items">
-                    <h3>Registro de candidatos em Votações</h3>
+                    <h3>Registro de candidato em Votação</h3>
                     <p>Preencha os campos abaixo.</p>
                     <form class="requires-validation" method="POST">
                         @csrf
