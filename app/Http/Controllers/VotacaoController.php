@@ -62,6 +62,12 @@ class VotacaoController extends Controller
 
        return redirect()->route('votacao.index');
     }
+    public function delete(Request $request, $id){
+        $obj = Votacao::findOrFail($id);
+        $obj->delete();
+
+        return redirect()->route('votacao.index');
+    }
 
     public function ativaVotacao(Request $request, $codigo){
         $votacao = Votacao::where('codigo', $codigo)->firstOrFail();

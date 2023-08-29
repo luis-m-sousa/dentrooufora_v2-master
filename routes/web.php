@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\VotacaoController;
+use App\Http\Controllers\CandidatoVotacaoController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -44,6 +45,12 @@ Route::get('/votacao/delete/{id}',             [VotacaoController::class, 'delet
 
 Route::get('/votacao/{codigo}',                [VotacaoController::class, 'ativaVotacao'])->name('votacao.ativa');
 
+Route::get('/candidatovotacao',                         [CandidatoVotacaoController::class, 'index'])->name('candidatovotacao.index')->middleware('auth');
+Route::get('/candidatovotacao/create',                  [CandidatoVotacaoController::class, 'create'])->name('candidatovotacao.create')->middleware('auth');
+Route::post('/candidatovotacao/create',                 [CandidatoVotacaoController::class, 'store'])->name('candidatovotacao.store')->middleware('auth');
+Route::get('/candidatovotacao/edit/{candidato_id}/{votacao_id}',               [CandidatoVotacaoController::class, 'edit'])->name('candidatovotacao.edit')->middleware('auth');
+Route::post('/candidatovotacao/update/{candidato_id}/{votacao_id}',            [CandidatoVotacaoController::class, 'update'])->name('candidatovotacao.update')->middleware('auth');
+Route::get('/candidatovotacao/delete/{candidato_id}/{votacao_id}',             [CandidatoVotacaoController::class, 'delete'])->name('candidatovotacao.delete')->middleware('auth');
 
 
 

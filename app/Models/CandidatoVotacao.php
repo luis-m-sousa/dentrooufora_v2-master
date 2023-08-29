@@ -12,4 +12,9 @@ class CandidatoVotacao extends Model
     use SoftDeletes;
 
     protected $table = 'candidato_votacao';
+    protected $fillable = ['votacao_id', 'candidato_id', 'pontos'];
+
+    public function votos(){
+        return $this->belongsTo(CandidatoVotacao::class);
+    }
 }

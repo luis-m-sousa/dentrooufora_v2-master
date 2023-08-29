@@ -18,7 +18,7 @@
             <th scope="col">Descrição</th>
             <th scope="col">ID da Categoria</th>
             <th scope="col">Pública</th>
-            <th width="160">Ações</th>
+            <th width="300">Ações</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +40,7 @@
                 <td>
                     <a href="{{ route('votacao.edit', [$votacao->id]) }}"><button class="btn btn-secondary btn-sm">Editar</button></a>
                     <a href="{{ route('votacao.delete', [$votacao->id]) }}"><button class="btn btn-danger btn-sm">Excluir</button></a>
+                    <a href="{{ route('votacao.ativa', [$votacao->codigo]) }}"><button class="btn btn-sm btn-success">Página</button></a>
                 </td>
             </tr>
             @endforeach
